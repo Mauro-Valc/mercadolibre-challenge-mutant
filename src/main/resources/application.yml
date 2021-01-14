@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: mercadolibre-challenge-mutant
+    
+server:
+  port: 8095
+  
+logging:
+  level:
+    com.mercadolibre.api: DEBUG

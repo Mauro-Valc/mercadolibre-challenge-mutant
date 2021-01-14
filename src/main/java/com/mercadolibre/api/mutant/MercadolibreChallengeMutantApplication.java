@@ -1,4 +1,4 @@
-package com.mercadolibre.api;
+package com.mercadolibre.api.mutant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
