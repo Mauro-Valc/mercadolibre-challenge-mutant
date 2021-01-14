@@ -1,7 +1,8 @@
 package com.mercadolibre.api.mutant.business;
 
 import static com.mercadolibre.api.mutant.util.MutantUtil.DNA;
-import static com.mercadolibre.api.mutant.util.MutantUtil.*;
+import static com.mercadolibre.api.mutant.util.MutantUtil.NITROGENOUS_BASE_PATTERN;
+import static com.mercadolibre.api.mutant.util.MutantUtil.SEQUENCE_SIZE_MUTANT;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,23 +10,29 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.mercadolibre.api.mutant.domain.DNASequence;
+import com.mercadolibre.api.mutant.model.Mutant;
+import com.mercadolibre.api.mutant.repository.MutantRepository;
 
 @Service
 public class MutantBusinessImpl implements MutantBusiness {
 
 	/** Logger */
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutantBusinessImpl.class);
+	@Autowired
+	private MutantRepository mutantRepository;
 
 	public ResponseEntity<String> mutantValidator(DNASequence dna) {
 		ResponseEntity<String> response = null;
 		try {
 			String[] array = dna.getDna().toArray(new String[0]);
 			boolean mutant = isMutant(array);
+			this.createMutantRecord(array.toString(), mutant);
 			if (mutant)  {
 				response = new ResponseEntity<>(HttpStatus.OK);
 			}else {
@@ -35,6 +42,13 @@ public class MutantBusinessImpl implements MutantBusiness {
 			response = new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
 		}
 		return response;
+	}
+
+	private void createMutantRecord(String dna, boolean isMutant) {
+		Mutant mutant = new Mutant();
+		mutant.setDna(dna);
+		mutant.setMutant(isMutant);
+		this.mutantRepository.save(mutant);
 	}
 
 	private boolean isMutant(String[] array) throws Exception {
@@ -111,7 +125,7 @@ public class MutantBusinessImpl implements MutantBusiness {
 	private char[][] loadDNAStructure(List<String> dnaSequence) throws Exception {
 		LOGGER.debug("Load the DNA structure into a Two-dimensional vectors.");
 		int vectorLength = dnaSequence.size();
-		if (vectorLength < 4) {
+		if (vectorLength < SEQUENCE_SIZE_MUTANT) {
 			throw new Exception();
 		}
 		char[][] dna = new char[vectorLength][vectorLength];
