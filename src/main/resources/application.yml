@@ -1,9 +1,14 @@
 spring:
   application:
     name: mercadolibre-challenge-mutant
+  datasource:
+    url: jdbc:mysql://mercadolibre.cxtnjbpevbpz.us-east-1.rds.amazonaws.com/mercadolibre?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: admin
+    password: mercadolibre
+    driver-class-name: com.mysql.cj.jdbc.Driver
     
 server:
-  port: 8095
+  port: 8080
   
 logging:
   level:

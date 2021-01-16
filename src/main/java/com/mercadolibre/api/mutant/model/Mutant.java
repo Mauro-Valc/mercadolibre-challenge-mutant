@@ -15,8 +15,6 @@ public class Mutant {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mutant_id", nullable = false)
 	private Long mutantId;
-	@Column(name = "dna", nullable = false)
-	private String dna;
 	@Column(name = "is_mutant", nullable = false)
 	private boolean mutant;
 
@@ -32,20 +30,6 @@ public class Mutant {
 	 */
 	public void setMutantId(Long mutantId) {
 		this.mutantId = mutantId;
-	}
-
-	/**
-	 * @return the dna
-	 */
-	public String getDna() {
-		return dna;
-	}
-
-	/**
-	 * @param dna the dna to set
-	 */
-	public void setDna(String dna) {
-		this.dna = dna;
 	}
 
 	/**
