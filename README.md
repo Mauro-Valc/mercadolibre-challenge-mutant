@@ -1,6 +1,6 @@
 # mercadolibre-challenge-mutant
 
-Challenge propuesto para Back-end el cual consiste en crear una API REST para detercar si un humano es mutante a partir de su DNA
+Challenge propuesto para Back-end el cual consiste en crear una API REST para detercar si un humano es mutante a partir de su ADN
 
 ## Tecnologias
 * Java 11
