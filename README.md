@@ -94,7 +94,7 @@ Para validar la cobertura utilice el plugin Java Code Coverage de eclipce
 
 ### Ejecutar en local
 
-Para correr el programa en local podemos utilizar los siguientes comandos:
+Para correr el programa en local podemos utilizar el siguiente comando:
 
 ```
 gradle run
