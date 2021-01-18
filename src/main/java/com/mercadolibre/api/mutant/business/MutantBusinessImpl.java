@@ -104,6 +104,7 @@ public class MutantBusinessImpl implements MutantBusiness {
 		this.addAllColumns(matrixDNA, results);
 		addValidDiagonals(matrixDNA, results);
 		addValidContraDiagonals(matrixDNA, results);
+		// Allows searching the list<String> for the times that valid sequences are repeated
 		long mutant = results.stream().filter(a -> DNA.stream().filter(w -> a.contains(w)).count() > 0)
 				.peek(a -> LOGGER.debug("Mutant sequence: {}", a)).count();
 		return (mutant > 1);
