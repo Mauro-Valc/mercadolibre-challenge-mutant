@@ -96,7 +96,9 @@ public class MutantBusinessImpl implements MutantBusiness {
 	 * @throws Exception
 	 */
 	private boolean isMutant(String[] dnaSecuence) throws Exception {
+		// I am aware that in this step what we did previously with the list is undone, I did it like this so that the brand will remain isMutant is as requested in the challenge
 		List<String> dna = new ArrayList<String>(Arrays.asList(dnaSecuence));
+		
 		List<String> results = new ArrayList<>();
 		char[][] matrixDNA = null;
 		matrixDNA = createMatrixDNA(dna);
