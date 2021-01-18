@@ -169,7 +169,7 @@ public class MutantBusinessImpl implements MutantBusiness {
 	}
 
 	/**
-	 * Allows add all columns of the matix
+	 * Allows add all columns of the matrix
 	 * 
 	 * @param matrixDNA
 	 * @param result
